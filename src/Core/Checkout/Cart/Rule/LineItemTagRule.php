@@ -51,9 +51,6 @@ class LineItemTagRule extends Rule
         return false;
     }
 
-    /**
-     * @return array|Constraint[][]
-     */
     public function getConstraints(): array
     {
         $constraints = [

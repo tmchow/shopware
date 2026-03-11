@@ -62,9 +62,6 @@ class LineItemCustomFieldRule extends Rule
         return false;
     }
 
-    /**
-     * @return array|Constraint[][]
-     */
     public function getConstraints(): array
     {
         return CustomFieldRule::getConstraints($this->renderedField);

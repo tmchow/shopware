@@ -52,9 +52,6 @@ class LineItemProductTypeRule extends Rule
         return false;
     }
 
-    /**
-     * @return array<string, array<int, Constraint>>
-     */
     public function getConstraints(): array
     {
         return [

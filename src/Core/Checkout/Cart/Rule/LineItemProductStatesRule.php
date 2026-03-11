@@ -50,8 +50,6 @@ class LineItemProductStatesRule extends Rule
     }
 
     /**
-     * @return array<string, array<int, Constraint>>
-     *
      * @deprecated tag:v6.8.0 - reason:remove-rule - Will be removed, as product states are deprecated.
      */
     public function getConstraints(): array
