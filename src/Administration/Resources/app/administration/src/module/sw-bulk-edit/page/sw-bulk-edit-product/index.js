@@ -1249,6 +1249,7 @@ export default {
             const context = {
                 'sw-measurement-length-unit': this.lengthUnit,
                 'sw-measurement-weight-unit': this.weightUnit,
+                'default-tax-rate': !this.isChild,
             };
 
             const requests = payloadChunks.map((payload) => {

@@ -6,6 +6,9 @@ const { Service, Application } = Shopware;
 const { Criteria } = Shopware.Data;
 const { cloneDeep } = Shopware.Utils.object;
 
+/** @internal Admin-only option from bulk-edit page; must not be sent as a sync HTTP header. */
+const BULK_EDIT_CONTEXT_DEFAULT_TAX_RATE = 'default-tax-rate';
+
 /**
  * @class
  * @extends BulkEditBaseHandler
@@ -21,8 +24,11 @@ class BulkEditProductHandler extends BulkEditBaseHandler {
         this.products = {};
     }
 
-    async bulkEdit(entityIds, payload, context) {
+    async bulkEdit(entityIds, payload, context = {}) {
         this.entityIds = entityIds;
+        const { [BULK_EDIT_CONTEXT_DEFAULT_TAX_RATE]: applyDefaultTaxWithPrice = false, ...syncHeaders } = context;
+
+        const hasTaxIdChange = payload.some((change) => change.field === 'taxId');
         const taxId = payload.find((change) => change.field === 'taxId')?.value;
         const price = payload.find((change) => change.field === 'price')?.value;
         const purchasePrices = payload.find((change) => change.field === 'purchasePrices')?.value;
@@ -42,6 +48,17 @@ class BulkEditProductHandler extends BulkEditBaseHandler {
             updatedPricePayload = this.updatePriceDirectly(price, purchasePrices, updatedPricePayload);
 
             payload = payload.filter((change) => change.field !== 'price' && change.field !== 'purchasePrices');
+        }
+
+        if ((price || purchasePrices) && !hasTaxIdChange && applyDefaultTaxWithPrice && updatedPricePayload.length > 0) {
+            const defaultTaxId = await this.getDefaultTaxId();
+
+            if (defaultTaxId) {
+                updatedPricePayload = updatedPricePayload.map((row) => ({
+                    ...row,
+                    taxId: row.taxId ?? defaultTaxId,
+                }));
+            }
         }
 
         const syncPayload = await this.buildBulkSyncPayload(payload);
@@ -72,7 +89,7 @@ class BulkEditProductHandler extends BulkEditBaseHandler {
                 {
                     'single-operation': 1,
                     'sw-language-id': Shopware.Context.api.languageId,
-                    ...context,
+                    ...syncHeaders,
                 },
             );
         });
@@ -111,6 +128,17 @@ class BulkEditProductHandler extends BulkEditBaseHandler {
         return productRepository.search(criteria, Shopware.Context.api).then((products) => {
             this.products = products;
         });
+    }
+
+    async getDefaultTaxId() {
+        const taxRepository = this.repositoryFactory.create('tax');
+        const criteria = new Criteria(1, 1);
+        criteria.addSorting(Criteria.sort('position'));
+
+        const taxes = await taxRepository.search(criteria, Shopware.Context.api);
+        const tax = taxes.first?.() ?? taxes[0];
+
+        return tax?.id ?? null;
     }
 
     async recalculatePrices(taxId, inputPrice, inputPurchasePrices) {

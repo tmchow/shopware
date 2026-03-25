@@ -101,6 +101,216 @@ describe('module/sw-bulk-edit/service/handler/bulk-edit-product.handler', () => 
         expect(result).toBe(true);
     });
 
+    describe('default tax with price bulk edit', () => {
+        it('applies first tax by position when price changes without tax change and context flag is set', async () => {
+            const handler = getBulkEditProductHandler();
+            const currencyId = 'b7d2554b0ce847cd82f3ac9bd1c0dfca';
+
+            handler.products = [
+                {
+                    id: 'product_1',
+                    taxId: 'reduced-tax',
+                    price: [
+                        {
+                            currencyId,
+                            gross: 50,
+                            net: 42.02,
+                            linked: true,
+                        },
+                    ],
+                },
+            ];
+            handler.getProducts = jest.fn().mockResolvedValue(undefined);
+            handler.repositoryFactory = {
+                create: (entity) => {
+                    if (entity === 'tax') {
+                        return {
+                            search: () =>
+                                Promise.resolve([
+                                    {
+                                        id: 'standard-tax-id',
+                                        position: 1,
+                                    },
+                                ]),
+                        };
+                    }
+
+                    return {
+                        search: () => Promise.resolve([]),
+                    };
+                },
+            };
+
+            const syncSpy = jest.spyOn(handler.syncService, 'sync').mockResolvedValue({ data: [] });
+            jest.spyOn(handler, 'buildBulkSyncPayload').mockResolvedValue({});
+
+            await handler.bulkEdit(
+                ['product_1'],
+                [
+                    {
+                        field: 'price',
+                        type: 'overwrite',
+                        value: [
+                            {
+                                currencyId,
+                                gross: 100,
+                                net: 84.03,
+                                linked: true,
+                            },
+                        ],
+                    },
+                ],
+                { 'default-tax-rate': true },
+            );
+
+            const upsertPayload = syncSpy.mock.calls[0][0]['upsert-product'].payload;
+
+            expect(upsertPayload[0].taxId).toBe('standard-tax-id');
+            expect(syncSpy.mock.calls[0][2]).not.toHaveProperty('default-tax-rate');
+        });
+
+        it('does not apply default tax when context flag is unset (e.g. variant bulk edit)', async () => {
+            const handler = getBulkEditProductHandler();
+            const currencyId = 'b7d2554b0ce847cd82f3ac9bd1c0dfca';
+
+            handler.products = [
+                {
+                    id: 'product_1',
+                    taxId: 'reduced-tax',
+                    price: [
+                        {
+                            currencyId,
+                            gross: 50,
+                            net: 42.02,
+                            linked: true,
+                        },
+                    ],
+                },
+            ];
+            handler.getProducts = jest.fn().mockResolvedValue(undefined);
+            handler.repositoryFactory = {
+                create: () => ({
+                    search: () =>
+                        Promise.resolve([
+                            {
+                                id: 'standard-tax-id',
+                                position: 1,
+                            },
+                        ]),
+                }),
+            };
+
+            const syncSpy = jest.spyOn(handler.syncService, 'sync').mockResolvedValue({ data: [] });
+            jest.spyOn(handler, 'buildBulkSyncPayload').mockResolvedValue({});
+
+            await handler.bulkEdit(
+                ['product_1'],
+                [
+                    {
+                        field: 'price',
+                        type: 'overwrite',
+                        value: [
+                            {
+                                currencyId,
+                                gross: 100,
+                                net: 84.03,
+                                linked: true,
+                            },
+                        ],
+                    },
+                ],
+                { 'default-tax-rate': false },
+            );
+
+            const upsertPayload = syncSpy.mock.calls[0][0]['upsert-product'].payload;
+
+            expect(upsertPayload[0].taxId).toBeUndefined();
+        });
+
+        it('does not apply default tax when payload includes a tax change', async () => {
+            const handler = getBulkEditProductHandler();
+            const currencyId = 'b7d2554b0ce847cd82f3ac9bd1c0dfca';
+
+            handler.products = [
+                {
+                    id: 'product_1',
+                    taxId: 'reduced-tax',
+                    price: [
+                        {
+                            currencyId,
+                            gross: 50,
+                            net: 42.02,
+                            linked: true,
+                        },
+                    ],
+                },
+            ];
+            handler.getProducts = jest.fn().mockResolvedValue(undefined);
+            handler.repositoryFactory = {
+                create: () => ({
+                    search: () =>
+                        Promise.resolve([
+                            {
+                                id: 'standard-tax-id',
+                                position: 1,
+                            },
+                        ]),
+                }),
+            };
+
+            const syncSpy = jest.spyOn(handler.syncService, 'sync').mockResolvedValue({ data: [] });
+            jest.spyOn(handler, 'buildBulkSyncPayload').mockResolvedValue({
+                'upsert-product': {
+                    action: 'upsert',
+                    entity: 'product',
+                    payload: [{ id: 'product_1', taxId: 'user-picked-tax' }],
+                },
+            });
+
+            await handler.bulkEdit(
+                ['product_1'],
+                [
+                    {
+                        field: 'taxId',
+                        type: 'overwrite',
+                        value: 'user-picked-tax',
+                    },
+                    {
+                        field: 'price',
+                        type: 'overwrite',
+                        value: [
+                            {
+                                currencyId,
+                                gross: 100,
+                                net: 84.03,
+                                linked: true,
+                                listPrice: {},
+                                regulationPrice: {},
+                            },
+                        ],
+                    },
+                    {
+                        field: 'purchasePrices',
+                        type: 'overwrite',
+                        value: [
+                            {
+                                currencyId,
+                                gross: 10,
+                                net: 8,
+                                linked: true,
+                            },
+                        ],
+                    },
+                ],
+                { 'default-tax-rate': true },
+            );
+
+            const upsertPayload = syncSpy.mock.calls[0][0]['upsert-product'].payload;
+
+            expect(upsertPayload[0].taxId).toBe('user-picked-tax');
+        });
+    });
+
     describe('test buildBulkSyncPayload', () => {
         let handler = null;
 

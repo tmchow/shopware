@@ -651,7 +651,7 @@ describe('src/module/sw-bulk-edit/page/sw-bulk-edit-product', () => {
 
         wrapper.vm.onProcessData();
 
-        const changeField = wrapper.vm.bulkEditSelected[0];
+        const changeField = wrapper.vm.bulkEditSelected.find((change) => change.field === 'price');
         expect(changeField.field).toBe('price');
         expect(changeField.value[0]).toHaveProperty('currencyId');
         expect(changeField.value[0]).toHaveProperty('net');
@@ -678,7 +678,7 @@ describe('src/module/sw-bulk-edit/page/sw-bulk-edit-product', () => {
 
         wrapper.vm.onProcessData();
 
-        const changeField = wrapper.vm.bulkEditSelected[0];
+        const changeField = wrapper.vm.bulkEditSelected.find((change) => change.field === 'price');
         expect(changeField.field).toBe('price');
         expect(changeField.value[0]).toHaveProperty('currencyId');
         expect(changeField.value[0]).toHaveProperty('net');
@@ -709,7 +709,7 @@ describe('src/module/sw-bulk-edit/page/sw-bulk-edit-product', () => {
 
         wrapper.vm.onProcessData();
 
-        const changeField = wrapper.vm.bulkEditSelected[0];
+        const changeField = wrapper.vm.bulkEditSelected.find((change) => change.field === 'price');
         expect(changeField.field).toBe('price');
         expect(changeField.value[0]).toHaveProperty('currencyId');
         expect(changeField.value[0]).toHaveProperty('net');
