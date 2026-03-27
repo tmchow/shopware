@@ -25,7 +25,7 @@ abstract class Error extends \Exception implements \JsonSerializable, AssignArra
     abstract public function getParameters(): array;
 
     /**
-     * @return array<string, mixed>
+     * @return array<mixed>
      */
     abstract public function getErrorMessages(): array;
 
