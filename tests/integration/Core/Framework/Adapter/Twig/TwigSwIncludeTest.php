@@ -119,7 +119,7 @@ class TwigSwIncludeTest extends TestCase
     }
 
     /**
-     * @param BundleFixture[] $bundles
+     * @param list<BundleFixture> $bundles
      */
     private function initTwig(array $bundles): Environment
     {

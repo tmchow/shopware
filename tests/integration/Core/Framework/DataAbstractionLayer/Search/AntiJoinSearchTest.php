@@ -420,7 +420,7 @@ class AntiJoinSearchTest extends TestCase
     }
 
     /**
-     * @param string[] $tags
+     * @param list<string> $tags
      *
      * @return array{
      *     id: string,

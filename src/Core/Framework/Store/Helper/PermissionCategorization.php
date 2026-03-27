@@ -417,7 +417,7 @@ class PermissionCategorization
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public static function getCategoryNames(): array
     {

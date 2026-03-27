@@ -333,7 +333,7 @@ class TestEnvironment extends Environment
     private array $calls = [];
 
     /**
-     * @param mixed[] $context
+     * @param list<mixed> $context
      */
     public function render($name, array $context = []): string
     {

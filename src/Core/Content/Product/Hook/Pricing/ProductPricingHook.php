@@ -26,7 +26,7 @@ class ProductPricingHook extends Hook implements SalesChannelContextAware
     final public const HOOK_NAME = 'product-pricing';
 
     /**
-     * @param ProductProxy[] $products
+     * @param list<ProductProxy> $products
      *
      * @internal
      */
@@ -38,7 +38,7 @@ class ProductPricingHook extends Hook implements SalesChannelContextAware
     }
 
     /**
-     * @return ProductProxy[]
+     * @return list<ProductProxy>
      */
     public function getProducts(): iterable
     {

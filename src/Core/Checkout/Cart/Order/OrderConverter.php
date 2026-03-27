@@ -506,7 +506,7 @@ class OrderConverter
     }
 
     /**
-     * @param string[] $ruleIds
+     * @param list<string> $ruleIds
      *
      * @return array<string, string[]>
      */

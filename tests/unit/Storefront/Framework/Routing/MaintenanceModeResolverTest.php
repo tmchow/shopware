@@ -225,7 +225,7 @@ class MaintenanceModeResolverTest extends TestCase
     }
 
     /**
-     * @param string[] $allowedIpAddresses
+     * @param list<string> $allowedIpAddresses
      */
     private static function getRequest(
         bool $useProxy,

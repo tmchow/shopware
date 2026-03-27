@@ -13,7 +13,7 @@ use Shopware\Core\System\SalesChannel\SalesChannelContext;
 class AfterLineItemAddedEvent implements ShopwareSalesChannelEvent, CartEvent
 {
     /**
-     * @param LineItem[] $lineItems
+     * @param list<LineItem> $lineItems
      */
     public function __construct(
         protected array $lineItems,
@@ -23,7 +23,7 @@ class AfterLineItemAddedEvent implements ShopwareSalesChannelEvent, CartEvent
     }
 
     /**
-     * @return LineItem[]
+     * @return list<LineItem>
      */
     public function getLineItems(): array
     {

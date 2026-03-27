@@ -695,7 +695,7 @@ class PluginLifecycleService
     /**
      * Takes plugin base classes and returns the corresponding entities.
      *
-     * @param Plugin[] $plugins
+     * @param list<Plugin> $plugins
      *
      * @return EntitySearchResult<PluginCollection>
      */

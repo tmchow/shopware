@@ -182,9 +182,9 @@ class SeoUrlUpdaterTest extends TestCase
     }
 
     /**
-     * @param LanguageCollection[] $languageSearches
-     * @param SalesChannelCollection[] $salesChannelSearches
-     * @param SeoUrlRouteInterface[] $seoUrlRoutes
+     * @param list<LanguageCollection> $languageSearches
+     * @param list<SalesChannelCollection> $salesChannelSearches
+     * @param list<SeoUrlRouteInterface> $seoUrlRoutes
      */
     private function createSeoUrlUpdater(
         array $languageSearches = [],

@@ -12,7 +12,7 @@ use Twig\TwigFunction;
 class FeatureFlagExtension extends AbstractExtension
 {
     /**
-     * @return FeatureFlagCallTokenParser[]
+     * @return list<FeatureFlagCallTokenParser>
      */
     public function getTokenParsers()
     {
@@ -22,7 +22,7 @@ class FeatureFlagExtension extends AbstractExtension
     }
 
     /**
-     * @return TwigFunction[]
+     * @return list<TwigFunction>
      */
     public function getFunctions(): array
     {

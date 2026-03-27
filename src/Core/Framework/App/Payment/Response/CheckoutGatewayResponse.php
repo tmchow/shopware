@@ -11,12 +11,12 @@ use Shopware\Core\Framework\Log\Package;
 class CheckoutGatewayResponse
 {
     /**
-     * @var string[]
+     * @var list<string>
      */
     public array $paymentMethods = [];
 
     /**
-     * @var string[]
+     * @var list<string>
      */
     public array $shippingMethods = [];
 
@@ -58,7 +58,7 @@ class CheckoutGatewayResponse
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getShippingMethods(): array
     {

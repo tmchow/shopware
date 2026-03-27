@@ -35,7 +35,7 @@ abstract class EntityDefinition
     protected ?CompiledFieldCollection $fields = null;
 
     /**
-     * @var EntityExtension[]
+     * @var list<EntityExtension>
      */
     protected array $extensions = [];
 
@@ -46,12 +46,12 @@ abstract class EntityDefinition
     protected DefinitionInstanceRegistry $registry;
 
     /**
-     * @var TranslatedField[]
+     * @var list<TranslatedField>
      */
     protected array $translatedFields = [];
 
     /**
-     * @var Field[]
+     * @var list<Field>
      */
     protected array $extensionFields = [];
 

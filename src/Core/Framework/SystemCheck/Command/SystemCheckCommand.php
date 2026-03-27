@@ -82,7 +82,7 @@ class SystemCheckCommand extends Command
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     private function getAllowedContexts(): array
     {

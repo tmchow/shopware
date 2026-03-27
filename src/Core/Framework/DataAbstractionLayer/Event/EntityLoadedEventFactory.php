@@ -54,7 +54,7 @@ class EntityLoadedEventFactory
     /**
      * @param array<mixed> $entities
      *
-     * @return EntityLoadedContainerEvent[]
+     * @return list<EntityLoadedContainerEvent>
      */
     public function createForSalesChannel(array $entities, SalesChannelContext $context): array
     {
@@ -75,7 +75,7 @@ class EntityLoadedEventFactory
     /**
      * @param array<mixed> $entities
      *
-     * @return EntityLoadedContainerEvent[]
+     * @return list<EntityLoadedContainerEvent>
      */
     public function createPartialForSalesChannel(array $entities, SalesChannelContext $context): array
     {

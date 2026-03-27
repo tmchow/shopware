@@ -194,7 +194,7 @@ class ThumbnailExtensionTest extends TestCase
     }
 
     /**
-     * @param BundleFixture[] $bundles
+     * @param list<BundleFixture> $bundles
      *
      * @throws LoaderError
      * @throws Exception

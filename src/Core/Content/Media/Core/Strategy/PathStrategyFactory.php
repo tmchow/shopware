@@ -15,7 +15,7 @@ class PathStrategyFactory
     /**
      * @internal
      *
-     * @param AbstractMediaPathStrategy[] $strategies
+     * @param list<AbstractMediaPathStrategy> $strategies
      */
     public function __construct(private readonly iterable $strategies)
     {

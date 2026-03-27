@@ -144,7 +144,7 @@ class SendPasswordRecoveryMailRoute extends AbstractSendPasswordRecoveryMailRout
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     private function getDomainUrls(SalesChannelContext $context): array
     {

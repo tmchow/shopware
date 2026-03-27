@@ -229,7 +229,7 @@ class SetPaymentOrderRoute extends AbstractSetPaymentOrderRoute
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     private function getOrderRules(OrderEntity $order, SalesChannelContext $salesChannelContext): array
     {

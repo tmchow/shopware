@@ -86,7 +86,7 @@ class DataCollector extends BaseDataCollector
     }
 
     /**
-     * @return RequestInfo[]
+     * @return list<RequestInfo>
      */
     public function getRequests(): array
     {

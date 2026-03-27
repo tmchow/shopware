@@ -66,7 +66,7 @@ class ScriptReferenceDataCollector
     }
 
     /**
-     * @return SplFileInfo[]
+     * @return list<SplFileInfo>
      */
     public static function getFiles(): array
     {

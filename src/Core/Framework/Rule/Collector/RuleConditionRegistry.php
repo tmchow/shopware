@@ -62,7 +62,7 @@ class RuleConditionRegistry
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getFlowRuleNames(): array
     {

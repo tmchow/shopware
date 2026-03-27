@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints\Type;
 class ConstraintBuilder
 {
     /**
-     * @var Constraint[]
+     * @var list<Constraint>
      */
     private array $constraints = [];
 
@@ -156,7 +156,7 @@ class ConstraintBuilder
     }
 
     /**
-     * @return Constraint[]
+     * @return list<Constraint>
      */
     public function getConstraints(): array
     {

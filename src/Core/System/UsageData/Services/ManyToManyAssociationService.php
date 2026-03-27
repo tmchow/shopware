@@ -25,7 +25,7 @@ class ManyToManyAssociationService
     }
 
     /**
-     * @param ManyToManyAssociationField[] $associationFields
+     * @param list<ManyToManyAssociationField> $associationFields
      * @param array<int, array<string, string>> $primaryKeys
      *
      * @return array<string, array<int|string, array<int, string>>>

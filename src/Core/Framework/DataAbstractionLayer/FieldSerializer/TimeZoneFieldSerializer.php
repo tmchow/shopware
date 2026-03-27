@@ -49,7 +49,7 @@ class TimeZoneFieldSerializer extends AbstractFieldSerializer
     /**
      * @param StringField $field
      *
-     * @return Constraint[]
+     * @return list<Constraint>
      */
     protected function getConstraints(Field $field): array
     {

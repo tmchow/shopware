@@ -26,7 +26,7 @@ class JsonApiEncoder
     private array $caseCache = [];
 
     /**
-     * @var Record[]
+     * @var list<Record>
      */
     private array $serializeCache = [];
 

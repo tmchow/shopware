@@ -13,7 +13,7 @@ class Validator
     /**
      * @internal
      *
-     * @param CartValidatorInterface[] $validators
+     * @param list<CartValidatorInterface> $validators
      */
     public function __construct(private readonly iterable $validators)
     {

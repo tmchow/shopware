@@ -189,7 +189,7 @@ class EntityGenerator implements ScaffoldingGenerator
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     private function parseEntities(string $entities): array
     {

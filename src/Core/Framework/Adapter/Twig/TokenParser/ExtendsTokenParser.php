@@ -99,7 +99,7 @@ final class ExtendsTokenParser extends AbstractTokenParser
     }
 
     /**
-     * @param string[] $scopes
+     * @param list<string> $scopes
      */
     private function shouldEndFile(array $scopes, string $source): bool
     {

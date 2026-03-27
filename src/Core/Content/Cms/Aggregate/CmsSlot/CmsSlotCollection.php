@@ -12,7 +12,7 @@ use Shopware\Core\Framework\Log\Package;
 class CmsSlotCollection extends EntityCollection
 {
     /**
-     * @var CmsSlotEntity[]|null indexed by slot name
+     * @var list<CmsSlotEntity>|null indexed by slot name
      */
     private ?array $slotCache = null;
 

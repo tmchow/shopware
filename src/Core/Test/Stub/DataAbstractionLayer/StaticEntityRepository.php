@@ -231,9 +231,9 @@ class StaticEntityRepository extends EntityRepository
     }
 
     /**
-     * @param mixed[] $payload
+     * @param list<mixed> $payload
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     private function getDummyPrimaryKeys(array $payload): array
     {

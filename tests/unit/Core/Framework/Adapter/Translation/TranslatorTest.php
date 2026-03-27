@@ -118,7 +118,7 @@ class TranslatorTest extends TestCase
     }
 
     /**
-     * @param string[] $dbSnippetSetIds
+     * @param list<string> $dbSnippetSetIds
      */
     #[DataProvider('getSnippetSetIdRequestProvider')]
     public function testGetSnippetId(array $dbSnippetSetIds, ?string $expectedSnippetSetId, ?string $locale, ?string $requestSnippetSetId): void

@@ -399,9 +399,9 @@ class OpenApiDefinitionSchemaBuilder
     }
 
     /**
-     * @param Field[] $extensions
+     * @param list<Field> $extensions
      *
-     * @return Property[]
+     * @return list<Property>
      */
     private function getExtensions(array $extensions, string $path): array
     {

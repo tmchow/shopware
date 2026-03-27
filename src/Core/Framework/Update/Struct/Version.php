@@ -20,7 +20,7 @@ class Version extends Struct
     public string $version = '';
 
     /**
-     * @var VersionFixedVulnerabilities[]
+     * @var list<VersionFixedVulnerabilities>
      */
     public array $fixedVulnerabilities = [];
 

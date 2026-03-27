@@ -144,7 +144,7 @@ class ExtendsTokenParserTest extends TestCase
     }
 
     /**
-     * @param string[] $scopes
+     * @param list<string> $scopes
      */
     private function parseTemplate(
         string $template,

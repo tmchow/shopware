@@ -9,7 +9,7 @@ use Shopware\Core\Framework\Rule\Rule;
 interface ContainerInterface
 {
     /**
-     * @param Rule[] $rules
+     * @param list<Rule> $rules
      */
     public function setRules(array $rules): void;
 

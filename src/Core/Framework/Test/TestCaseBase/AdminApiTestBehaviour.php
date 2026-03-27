@@ -122,8 +122,8 @@ trait AdminApiTestBehaviour
     }
 
     /**
-     * @param string[] $scopes
-     * @param string[]|null $aclPermissions
+     * @param list<string> $scopes
+     * @param list<string>|null $aclPermissions
      */
     public function authorizeBrowser(TestBrowser $browser, array $scopes = [], ?array $aclPermissions = null): void
     {
@@ -267,8 +267,8 @@ trait AdminApiTestBehaviour
     abstract protected static function getKernel(): KernelInterface;
 
     /**
-     * @param string[] $scopes
-     * @param string[]|null $permissions
+     * @param list<string> $scopes
+     * @param list<string>|null $permissions
      */
     protected function getBrowser(bool $authorized = true, array $scopes = [], ?array $permissions = null): TestBrowser
     {

@@ -9,17 +9,17 @@ use Symfony\Component\HttpFoundation\Response;
 abstract class AbstractReverseProxyGateway
 {
     /**
-     * @param string[] $tags
+     * @param list<string> $tags
      */
     abstract public function tag(array $tags, string $url, Response $response): void;
 
     /**
-     * @param string[] $tags
+     * @param list<string> $tags
      */
     abstract public function invalidate(array $tags): void;
 
     /**
-     * @param string[] $urls
+     * @param list<string> $urls
      */
     abstract public function ban(array $urls): void;
 

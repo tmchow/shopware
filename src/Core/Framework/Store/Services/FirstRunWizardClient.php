@@ -85,7 +85,7 @@ class FirstRunWizardClient
     }
 
     /**
-     * @return Plugin[]
+     * @return list<Plugin>
      */
     public function getLanguagePlugins(Context $context): array
     {
@@ -93,7 +93,7 @@ class FirstRunWizardClient
     }
 
     /**
-     * @return Plugin[]
+     * @return list<Plugin>
      */
     public function getDemoDataPlugins(Context $context): array
     {
@@ -200,7 +200,7 @@ class FirstRunWizardClient
     }
 
     /**
-     * @return Plugin[]
+     * @return list<Plugin>
      */
     private function getPluginsFromStore(string $endpoint, Context $context): array
     {

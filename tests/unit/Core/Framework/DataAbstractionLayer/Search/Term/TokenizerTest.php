@@ -14,8 +14,8 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\Term\Tokenizer;
 class TokenizerTest extends TestCase
 {
     /**
-     * @param string[] $expected
-     * @param string[]|null $preservedChars
+     * @param list<string> $expected
+     * @param list<string>|null $preservedChars
      */
     #[DataProvider('cases')]
     public function testInterpreter(string $term, array $expected, ?array $preservedChars = null): void

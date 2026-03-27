@@ -761,7 +761,7 @@ class AdministrationControllerTest extends TestCase
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     private function getExcludedTerms(?string $language): array
     {

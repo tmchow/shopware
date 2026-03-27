@@ -13,7 +13,7 @@ use Shopware\Core\Framework\Log\Package;
 class AppConfirmationDeltaProvider
 {
     /**
-     * @param AbstractAppDeltaProvider[] $deltaProviders
+     * @param list<AbstractAppDeltaProvider> $deltaProviders
      */
     public function __construct(private readonly iterable $deltaProviders)
     {

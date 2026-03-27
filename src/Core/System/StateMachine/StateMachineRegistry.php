@@ -32,7 +32,7 @@ use Symfony\Contracts\Service\ResetInterface;
 class StateMachineRegistry implements ResetInterface
 {
     /**
-     * @var StateMachineEntity[]
+     * @var list<StateMachineEntity>
      */
     private array $stateMachines;
 

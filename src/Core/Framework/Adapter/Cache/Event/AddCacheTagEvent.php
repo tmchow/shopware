@@ -8,7 +8,7 @@ use Shopware\Core\Framework\Log\Package;
 class AddCacheTagEvent
 {
     /**
-     * @var string[]
+     * @var list<string>
      */
     public array $tags;
 

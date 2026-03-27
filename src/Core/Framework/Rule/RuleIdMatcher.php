@@ -16,7 +16,7 @@ class RuleIdMatcher
 {
     /**
      * @param (IdAware&RuleIdAware)[] $options
-     * @param string[] $ruleIds
+     * @param list<string> $ruleIds
      *
      * @return (IdAware&RuleIdAware)[]
      */
@@ -31,7 +31,7 @@ class RuleIdMatcher
      * @template T of Collection<covariant (IdAware&RuleIdAware)>
      *
      * @param T $options
-     * @param string[] $ruleIds
+     * @param list<string> $ruleIds
      *
      * @return T
      */

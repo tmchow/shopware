@@ -12,7 +12,7 @@ use Shopware\Core\Framework\Log\Package;
 class ChainPipe extends AbstractPipe
 {
     /**
-     * @param AbstractPipe[] $chain
+     * @param list<AbstractPipe> $chain
      */
     public function __construct(private readonly array $chain)
     {

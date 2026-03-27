@@ -12,7 +12,7 @@ use Twig\TwigFunction;
 class PcreExtension extends AbstractExtension
 {
     /**
-     * @return TwigFilter[]
+     * @return list<TwigFilter>
      */
     public function getFilters(): array
     {

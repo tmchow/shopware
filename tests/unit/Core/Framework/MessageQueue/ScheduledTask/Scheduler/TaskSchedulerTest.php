@@ -32,7 +32,7 @@ use Symfony\Component\Messenger\MessageBusInterface;
 class TaskSchedulerTest extends TestCase
 {
     /**
-     * @param AggregationResult[] $aggregationResult
+     * @param list<AggregationResult> $aggregationResult
      */
     #[DataProvider('providerGetNextExecutionTime')]
     #[DisabledFeatures(['v6.8.0.0'])]
@@ -81,7 +81,7 @@ class TaskSchedulerTest extends TestCase
     }
 
     /**
-     * @param AggregationResult[] $aggregationResult
+     * @param list<AggregationResult> $aggregationResult
      */
     #[DataProvider('providerGetMinRunInterval')]
     public function testGetMinRunInterval(array $aggregationResult, ?int $time): void

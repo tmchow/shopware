@@ -38,7 +38,7 @@ class CustomerVatIdentificationValidatorTest extends TestCase
     private ExecutionContext $executionContext;
 
     /**
-     * @var string[]
+     * @var list<string>
      */
     private readonly array $countries;
 

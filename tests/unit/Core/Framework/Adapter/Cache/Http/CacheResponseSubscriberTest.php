@@ -184,7 +184,7 @@ class CacheResponseSubscriberTest extends TestCase
     }
 
     /**
-     * @param string[] $whitelist
+     * @param list<string> $whitelist
      */
     #[DataProvider('maintenanceRequest')]
     public function testMaintenanceRequest(bool $active, array $whitelist, bool $shouldBeCached): void

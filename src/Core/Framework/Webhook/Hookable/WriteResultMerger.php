@@ -87,10 +87,10 @@ class WriteResultMerger
     }
 
     /**
-     * @param EntityWriteResult[] $writeResults
+     * @param list<EntityWriteResult> $writeResults
      * @param string|array<string, string> $entityKey
      *
-     * @return EntityWriteResult[]
+     * @return list<EntityWriteResult>
      */
     private function findWriteResultByPrimaryKey(array $writeResults, array|string $entityKey): array
     {

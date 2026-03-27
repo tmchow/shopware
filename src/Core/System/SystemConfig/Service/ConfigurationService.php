@@ -25,7 +25,7 @@ class ConfigurationService
     /**
      * @internal
      *
-     * @param BundleInterface[] $bundles
+     * @param list<BundleInterface> $bundles
      * @param EntityRepository<AppCollection> $appRepository
      */
     public function __construct(

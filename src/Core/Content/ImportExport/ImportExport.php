@@ -54,7 +54,7 @@ class ImportExport
     private ?int $total = null;
 
     /**
-     * @var WriteCommand[]
+     * @var list<WriteCommand>
      */
     private array $failedWriteCommands = [];
 
@@ -716,7 +716,7 @@ class ImportExport
 
     /**
      * @param array<string, mixed> $overallResults
-     * @param EntityWrittenContainerEvent[] $results
+     * @param list<EntityWrittenContainerEvent> $results
      * @param array<int, array<int|string, mixed>> $failedRecords
      *
      * @return array<string, mixed>

@@ -93,7 +93,7 @@ class TranslationValidator implements EventSubscriberInterface
     }
 
     /**
-     * @return FkField[]
+     * @return list<FkField>
      */
     private function getFkFields(EntityTranslationDefinition $definition): array
     {

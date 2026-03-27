@@ -183,7 +183,7 @@ class WriteCommandExtractor
     /**
      * @param array<string, mixed> $rawData
      *
-     * @return string[]
+     * @return list<string>
      */
     public function extract(array $rawData, WriteParameterBag $parameters): array
     {
@@ -442,7 +442,7 @@ class WriteCommandExtractor
     }
 
     /**
-     * @return Field[]
+     * @return list<Field>
      */
     private function getFieldsInWriteOrder(EntityDefinition $definition): array
     {
@@ -498,9 +498,9 @@ class WriteCommandExtractor
     }
 
     /**
-     * @param Field[] $fields
+     * @param list<Field> $fields
      *
-     * @return Field[]
+     * @return list<Field>
      */
     private function getMainFields(array $fields): array
     {

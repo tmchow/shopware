@@ -40,7 +40,7 @@ class CartConvertedEvent extends NestedEvent implements ShopwareSalesChannelEven
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getOriginalConvertedCart(): array
     {
@@ -48,7 +48,7 @@ class CartConvertedEvent extends NestedEvent implements ShopwareSalesChannelEven
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getConvertedCart(): array
     {
@@ -56,7 +56,7 @@ class CartConvertedEvent extends NestedEvent implements ShopwareSalesChannelEven
     }
 
     /**
-     * @param mixed[] $convertedCart
+     * @param list<mixed> $convertedCart
      */
     public function setConvertedCart(array $convertedCart): void
     {

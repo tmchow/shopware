@@ -66,7 +66,7 @@ class ParentRelationValidator implements EventSubscriberInterface
     }
 
     /**
-     * @param WriteCommand[] $writeCommands
+     * @param list<WriteCommand> $writeCommands
      *
      * @return list<array{id: string, entity: string, path: string}>
      */
