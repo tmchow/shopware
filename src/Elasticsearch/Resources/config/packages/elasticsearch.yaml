@@ -140,5 +140,3 @@ parameters:
     # @deprecated tag:v6.8.0 - change SHOPWARE_ADMIN_ES_NUMBER_OF_SHARDS and SHOPWARE_ADMIN_ES_NUMBER_OF_REPLICAS to empty string to match regular Elasticsearch of Storefront config
     env(SHOPWARE_ADMIN_ES_NUMBER_OF_SHARDS): "3"
     env(SHOPWARE_ADMIN_ES_NUMBER_OF_REPLICAS): "3"
-
-
